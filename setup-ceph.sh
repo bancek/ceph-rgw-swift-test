@@ -32,6 +32,8 @@ MON_NAME="a"
 MGR_NAME="x"
 RGW_ID="r"
 
+CEPH_LOOPBACK=`losetup -f`
+
 if [ ! -f "$CEPH_ROOT/initialized" ] || [ "$CEPH_PERSISTENT" != "true" ]; then
   rm -Rf $CEPH_ROOT/*
   mkdir -p "${LOG_DIR}" "${MON_DATA}" "${OSD_DATA}" "${MDS_DATA}" "${MOUNTPT}" "${RGW_DATA}"
