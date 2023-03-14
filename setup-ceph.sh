@@ -118,7 +118,7 @@ EOF
   ceph auth get-or-create client.rgw."${RGW_ID}" osd 'allow rwx' mon 'allow rw' -o "${RGW_DATA}/keyring"
   radosgw -n "client.rgw.${RGW_ID}" -k "${RGW_DATA}/keyring"
   timeout 60 sh -c 'until [ $(ceph -s | grep -c "rgw:") -eq 1 ]; do echo "waiting for rgw to show up" && sleep 1; done'
-  radosgw-admin user create --uid="$CEPH_SWIFT_TENANT" --display-name="$CEPH_SWIFT_TENANT"
+  radosgw-admin user create --uid="$CEPH_SWIFT_TENANT" --display-name="$CEPH_SWIFT_TENANT" --max-buckets=0
   radosgw-admin subuser create --uid="$CEPH_SWIFT_TENANT" --subuser="$CEPH_SWIFT_TENANT:$CEPH_SWIFT_USERNAME" --access=full
   radosgw-admin key create --subuser="$CEPH_SWIFT_TENANT:$CEPH_SWIFT_USERNAME" --key-type=swift --secret-key "$CEPH_SWIFT_PASSWORD"
 
