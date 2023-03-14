@@ -92,6 +92,7 @@ rgw usage max shards = 32
 rgw usage max user shards = 1
 log file = /var/log/ceph/client.rgw.${RGW_ID}.log
 rgw frontends = civetweb port=8080
+rgw_swift_token_expiration = 86400000
 EOF
 
   # start an osd
