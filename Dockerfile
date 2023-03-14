@@ -4,7 +4,7 @@ RUN apt-get update \
   && apt-get install -y apt-transport-https wget curl gnupg uuid-runtime \
   && wget -q -O- 'https://download.ceph.com/keys/release.asc' | apt-key add -
 
-ARG CEPH_VERSION=nautilus
+ARG CEPH_VERSION=octopus
 
 RUN echo "deb https://download.ceph.com/debian-${CEPH_VERSION}/ focal main" > /etc/apt/sources.list.d/ceph.list \
   && apt-get update \
